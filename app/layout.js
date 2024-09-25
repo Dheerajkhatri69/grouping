@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Gouping",
+  title: "Grouping",
   description: "Made by Dheeraj",
 };
 
