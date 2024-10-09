@@ -26,6 +26,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import Link from "next/link";
 
 export function SignupFormDemo() {
     // Initial form state
@@ -113,8 +114,11 @@ export function SignupFormDemo() {
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Spring-23</span>
             </p>
+
+            <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link>
+
             <form className="my-8" onSubmit={handleSubmit}>
-                <div className="flex flex-row space-y-0 space-x-2 mb-4">
+                <div className="flex flex-row space-y-0 justify-between space-x-2 mb-4">
                     <Select onValueChange={handleSelectChange}>
                         <SelectTrigger className="w-[180px] text-white">
                             <SelectValue placeholder="2" />
@@ -125,6 +129,7 @@ export function SignupFormDemo() {
                             <SelectItem value="4">4</SelectItem>
                         </SelectContent>
                     </Select>
+
                 </div>
 
                 {/* Render input fields conditionally based on selectedMembers */}
@@ -278,6 +283,8 @@ export function SignupFormDemo() {
                             Instagram
                         </Cover>
                     </a>
+
+
                 </div>
             </form>
         </div>
