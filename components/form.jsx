@@ -108,7 +108,7 @@ export function SignupFormDemo() {
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
                 Here submit your group members ID and NAME for project/presentation for
-                <span className="font-extrabold"> (DBMS)</span>
+                <span className="font-extrabold"> DBMS</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Spring-23</span>
