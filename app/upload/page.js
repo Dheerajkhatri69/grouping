@@ -10,7 +10,7 @@ const Page = () => {
 
             <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-transparent">
                 <h1 className="text-4xl font-semibold mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-                    <Cover className={"text-2xl"}>Join Google ClassRoom</Cover>
+                    <Cover className={"text-2xl"}>Join Google ClassRooms</Cover>
                 </h1>
 
                 <Link href="/" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Back</Link>
