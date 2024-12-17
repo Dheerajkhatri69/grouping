@@ -39,6 +39,8 @@ export function SignupFormDemo() {
         name3: "",
         id4: "",
         name4: "",
+        id5: "",
+        name5: "",
     };
 
     // State to track form inputs and number of members
@@ -46,7 +48,7 @@ export function SignupFormDemo() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedMembers, setSelectedMembers] = useState(4);  // State to track selected number of members
+    const [selectedMembers, setSelectedMembers] = useState(5);  // State to track selected number of members
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -90,32 +92,29 @@ export function SignupFormDemo() {
     const handleSelectChange = (value) => {
         setSelectedMembers(parseInt(value));
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsDisabled(true);
-        // Log form data to the console
-        console.log("Form Data:", formData);
-
-        fetch('https://sheetdb.io/api/v1/48w7ohbmsb772', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data: [
-                    {
-                        "ID1": formData.id1, "Member1": formData.name1,
-                        "ID2": formData.id2, "Member2": formData.name2,
-                        "ID3": formData.id3, "Member3": formData.name3,
-                        "ID4": formData.id4, "Member4": formData.name4
-                    }
-                ]
+        try {
+            const response = await fetch('https://sheetdb.io/api/v1/48w7ohbmsb772', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: [
+                        {
+                            "ID1": formData.id1, "Member1": formData.name1,
+                            "ID2": formData.id2, "Member2": formData.name2,
+                            "ID3": formData.id3, "Member3": formData.name3,
+                            "ID4": formData.id4, "Member4": formData.name4,
+                            "ID5": formData.id5, "Member5": formData.name5,
+                        }
+                    ]
+                })
             })
-        })
-            .then((response) => {
-                console.log(response);
-
+            if (response.ok) {
                 setMessage(
                     <>
                         {formData.name1} ({formData.id1})<br />
@@ -125,20 +124,47 @@ export function SignupFormDemo() {
                                 {formData.name3} ({formData.id3})<br />
                             </>
                         )}
-                        {selectedMembers === 4 && (
+                        {selectedMembers >= 4 && (
                             <>
                                 {formData.name4} ({formData.id4})<br />
                             </>
                         )}
+                        {selectedMembers === 5 && (
+                            <>
+                                {formData.name5} ({formData.id5})<br />
+                            </>
+                        )}
                     </>
                 );
+            } else {
+                setMessage(
+                    <>Error
+                        <br />
+                        <>{response.status}:(Bad Request)</><br />
+                        <>contect: <>dheerajkum838@gmail.com</></>
+                    </>
+                )
+            }
+            // Reset form data and re-enable the submit button
+            setFormData(initialFormData);
+            setIsDialogOpen(true);
+            setIsDisabled(false);
 
-                // Reset form data and re-enable the submit button
-                setFormData(initialFormData);
-                setIsDialogOpen(true);
-                setIsDisabled(false);
-            })
-            .then((data) => console.log(data));
+
+        } catch (error) {
+            console.error("Error occurred while posting the score:", error);
+            setMessage(
+                <>Error
+                    <br />
+                    <>An error occurred while posting the score. Please try again.</>
+                </>
+            )
+            setIsDialogOpen(true);
+            return {
+                success: false,
+                message: "An error occurred while posting the score. Please try again.",
+            };
+        }
 
     }
     // Handle input change
@@ -159,7 +185,7 @@ export function SignupFormDemo() {
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
                 Here submit your group members ID and NAME for project/presentation for
-                <span className="font-extrabold"> DAA(4A)</span>
+                <span className="font-extrabold"> Linear Algebra(4A)</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Spring-23</span>
@@ -266,7 +292,7 @@ export function SignupFormDemo() {
                     </div>
                 )}
 
-                {selectedMembers === 4 && (
+                {selectedMembers >= 4 && (
                     <div className="flex flex-row space-y-0 space-x-2 mb-4">
                         <LabelInputContainer>
                             <Label htmlFor="id4" className="text-white">ID</Label>
@@ -277,7 +303,7 @@ export function SignupFormDemo() {
                                 className="text-white"
                                 value={formData.id4}
                                 onChange={handleInputChange}
-                                required={selectedMembers === 4}
+                                required={selectedMembers >= 4}
                             />
                         </LabelInputContainer>
                         <LabelInputContainer>
@@ -289,12 +315,41 @@ export function SignupFormDemo() {
                                 className="text-white"
                                 value={formData.name4}
                                 onChange={handleInputChange}
-                                required={selectedMembers === 4}
+                                required={selectedMembers >= 4}
                             />
                         </LabelInputContainer>
                     </div>
                 )}
 
+
+                {selectedMembers === 5 && (
+                    <div className="flex flex-row space-y-0 space-x-2 mb-4">
+                        <LabelInputContainer>
+                            <Label htmlFor="id5" className="text-white">ID</Label>
+                            <Input
+                                type="text"
+                                name="id5"
+                                placeholder="CSC-23S-000"
+                                className="text-white"
+                                value={formData.id5}
+                                onChange={handleInputChange}
+                                required={selectedMembers === 5}
+                            />
+                        </LabelInputContainer>
+                        <LabelInputContainer>
+                            <Label htmlFor="name5" className="text-white">Full Name</Label>
+                            <Input
+                                type="text"
+                                name="name5"
+                                placeholder="XYZ"
+                                className="text-white"
+                                value={formData.name5}
+                                onChange={handleInputChange}
+                                required={selectedMembers === 5}
+                            />
+                        </LabelInputContainer>
+                    </div>
+                )}
                 <button
                     disabled={isDisabled}
                     className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
