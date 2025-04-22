@@ -50,44 +50,6 @@ export function SignupFormDemo() {
     const [isDisabled, setIsDisabled] = useState(false);
     const [selectedMembers, setSelectedMembers] = useState(5);  // State to track selected number of members
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setIsDisabled(true);
-    //     // Log form data to the console
-    //     console.log("Form Data:", formData);
-
-    //     // Submit the data via axios
-    //     axios.post('https://sheet.best/api/sheets/500e496e-fb8f-466a-9cc0-99ebfe0c07e5', {
-    //         ID1: formData.id1, Member1: formData.name1,
-    //         ID2: formData.id2, Member2: formData.name2,
-    //         ID3: formData.id3, Member3: formData.name3,
-    //         ID4: formData.id4, Member4: formData.name4
-    //     }).then((response) => {
-    //         console.log(response);
-
-    //         setMessage(
-    //             <>
-    //                 {formData.name1} ({formData.id1})<br />
-    //                 {formData.name2} ({formData.id2})<br />
-    //                 {selectedMembers >= 3 && (
-    //                     <>
-    //                         {formData.name3} ({formData.id3})<br />
-    //                     </>
-    //                 )}
-    //                 {selectedMembers === 4 && (
-    //                     <>
-    //                         {formData.name4} ({formData.id4})<br />
-    //                     </>
-    //                 )}
-    //             </>
-    //         );
-
-    //         // Reset form data and re-enable the submit button
-    //         setFormData(initialFormData);
-    //         setIsDialogOpen(true);
-    //         setIsDisabled(false);
-    //     });
-    // };
 
     const handleSelectChange = (value) => {
         setSelectedMembers(parseInt(value));
@@ -185,29 +147,16 @@ export function SignupFormDemo() {
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
                 Here submit your group members ID and NAME for project/presentation for
-                <span className="font-extrabold"> Linear Algebra(4A)</span>
+                <span className="font-extrabold"> Operating System _LAB(5A)</span>
                 <br />
                 <span className="font-mono">Batch:</span>
-                <span className="font-extrabold">Spring-23</span>
+                <span className="font-extrabold">Spring-25</span>
             </p>
 
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
 
             <form className="my-8" onSubmit={handleSubmit}>
-                {/* <div className="flex flex-row space-y-0 justify-between space-x-2 mb-4">
-                    <Select onValueChange={handleSelectChange}>
-                        <SelectTrigger className="w-[180px] text-white">
-                            <SelectValue placeholder="2" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="2">2</SelectItem>
-                            <SelectItem value="3">3</SelectItem>
-                            <SelectItem value="4">4</SelectItem>
-                        </SelectContent>
-                    </Select>
-
-                </div> */}
-
+               
                 {/* Render input fields conditionally based on selectedMembers */}
                 <div className="flex flex-row space-y-0 space-x-2 mb-4">
                     <LabelInputContainer>
@@ -292,7 +241,7 @@ export function SignupFormDemo() {
                     </div>
                 )}
 
-                {selectedMembers >= 4 && (
+                {/* {selectedMembers >= 4 && (
                     <div className="flex flex-row space-y-0 space-x-2 mb-4">
                         <LabelInputContainer>
                             <Label htmlFor="id4" className="text-white">ID</Label>
@@ -349,7 +298,7 @@ export function SignupFormDemo() {
                             />
                         </LabelInputContainer>
                     </div>
-                )}
+                )} */}
                 <button
                     disabled={isDisabled}
                     className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
