@@ -48,7 +48,7 @@ export function SignupFormDemo() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedMembers, setSelectedMembers] = useState(5);  // State to track selected number of members
+    const [selectedMembers, setSelectedMembers] = useState(3);  // State to track selected number of members
 
 
     const handleSelectChange = (value) => {
@@ -147,7 +147,7 @@ export function SignupFormDemo() {
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
                 Here submit your group members ID and NAME for project/presentation for
-                <span className="font-extrabold"> Operating System _LAB(5A)</span>
+                <span className="font-extrabold"> Numerical Computing 5A</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Spring-25</span>
@@ -156,7 +156,23 @@ export function SignupFormDemo() {
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
 
             <form className="my-8" onSubmit={handleSubmit}>
-               
+                
+                {/* Add this right after <form> opening tag */}
+                <div className="mb-4">
+                    <Label className="text-white block mb-2">Number of Members</Label>
+                    <Select onValueChange={handleSelectChange} defaultValue="3">
+                        <SelectTrigger className="text-white">
+                            <SelectValue placeholder="Select members" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {[3, 4, 5].map(num => (
+                                <SelectItem key={num} value={String(num)}>
+                                    {num} Members
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
                 {/* Render input fields conditionally based on selectedMembers */}
                 <div className="flex flex-row space-y-0 space-x-2 mb-4">
                     <LabelInputContainer>
@@ -241,7 +257,7 @@ export function SignupFormDemo() {
                     </div>
                 )}
 
-                {/* {selectedMembers >= 4 && (
+                {selectedMembers >= 4 && (
                     <div className="flex flex-row space-y-0 space-x-2 mb-4">
                         <LabelInputContainer>
                             <Label htmlFor="id4" className="text-white">ID</Label>
@@ -298,7 +314,7 @@ export function SignupFormDemo() {
                             />
                         </LabelInputContainer>
                     </div>
-                )} */}
+                )}
                 <button
                     disabled={isDisabled}
                     className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
