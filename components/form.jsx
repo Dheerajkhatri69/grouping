@@ -41,6 +41,7 @@ export function SignupFormDemo() {
         name4: "",
         id5: "",
         name5: "",
+        topic: ""
     };
 
     // State to track form inputs and number of members
@@ -72,6 +73,7 @@ export function SignupFormDemo() {
                             "ID3": formData.id3, "Member3": formData.name3,
                             "ID4": formData.id4, "Member4": formData.name4,
                             "ID5": formData.id5, "Member5": formData.name5,
+                            "Topic": formData.topic
                         }
                     ]
                 })
@@ -147,7 +149,7 @@ export function SignupFormDemo() {
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
                 Here submit your group members ID and NAME for project/presentation for
-                <span className="font-extrabold"> Numerical Computing 5A</span>
+                <span className="font-extrabold"> Operating System 5A</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Spring-25</span>
@@ -156,7 +158,7 @@ export function SignupFormDemo() {
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
 
             <form className="my-8" onSubmit={handleSubmit}>
-                
+
                 {/* Add this right after <form> opening tag */}
                 <div className="mb-4">
                     <Label className="text-white block mb-2">Number of Members</Label>
@@ -173,6 +175,21 @@ export function SignupFormDemo() {
                         </SelectContent>
                     </Select>
                 </div>
+                <div className="my-8">
+                    <LabelInputContainer>
+                        <Label htmlFor="topic" className="text-white">Topic</Label>
+                        <Input
+                            type="text"
+                            name="topic"
+                            placeholder="Hello world"
+                            className="text-white"
+                            value={formData.topic}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </LabelInputContainer>
+                </div>
+
                 {/* Render input fields conditionally based on selectedMembers */}
                 <div className="flex flex-row space-y-0 space-x-2 mb-4">
                     <LabelInputContainer>
