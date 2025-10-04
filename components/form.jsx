@@ -148,11 +148,11 @@ export function SignupFormDemo() {
                 <Cover>Grouping</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Here submit your group members ID and NAME for project/presentation for
-                <span className="font-extrabold"> Operating System 5A</span>
+                Here submit your group members ID and NAME for Assignment 01 for
+                <span className="font-extrabold"> AI 6A</span>
                 <br />
                 <span className="font-mono">Batch:</span>
-                <span className="font-extrabold">Spring-25</span>
+                <span className="font-extrabold">Fall-25</span>
             </p>
 
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
@@ -160,7 +160,7 @@ export function SignupFormDemo() {
             <form className="my-8" onSubmit={handleSubmit}>
 
                 {/* Add this right after <form> opening tag */}
-                <div className="mb-4">
+                {/* <div className="mb-4">
                     <Label className="text-white block mb-2">Number of Members</Label>
                     <Select onValueChange={handleSelectChange} defaultValue="3">
                         <SelectTrigger className="text-white">
@@ -174,8 +174,8 @@ export function SignupFormDemo() {
                             ))}
                         </SelectContent>
                     </Select>
-                </div>
-                <div className="my-8">
+                </div> */}
+                {/* <div className="my-8">
                     <LabelInputContainer>
                         <Label htmlFor="topic" className="text-white">Topic</Label>
                         <Input
@@ -188,7 +188,7 @@ export function SignupFormDemo() {
                             required
                         />
                     </LabelInputContainer>
-                </div>
+                </div> */}
 
                 {/* Render input fields conditionally based on selectedMembers */}
                 <div className="flex flex-row space-y-0 space-x-2 mb-4">
