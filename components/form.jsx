@@ -49,7 +49,7 @@ export function SignupFormDemo() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedMembers, setSelectedMembers] = useState(3);  // State to track selected number of members
+    const [selectedMembers, setSelectedMembers] = useState(0);  // State to track selected number of members
 
 
     const handleSelectChange = (value) => {
@@ -82,7 +82,7 @@ export function SignupFormDemo() {
                 setMessage(
                     <>
                         {formData.name1} ({formData.id1})<br />
-                        {formData.name2} ({formData.id2})<br />
+                        {/* {formData.name2} ({formData.id2})<br /> */}
                         {selectedMembers >= 3 && (
                             <>
                                 {formData.name3} ({formData.id3})<br />
@@ -148,8 +148,8 @@ export function SignupFormDemo() {
                 <Cover>Grouping</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Here submit your group members ID and NAME for Assignment 01 for
-                <span className="font-extrabold"> AI 6A</span>
+                Here submit your Name and ID for Operating Systems (3+1) (Old Curriculum) Enrollment 
+                <span className="font-extrabold"> Mr. Muhammad Shakir Sunday 12:00 - 03:00</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Fall-25</span>
@@ -197,7 +197,7 @@ export function SignupFormDemo() {
                         <Input
                             type="text"
                             name="id1"
-                            placeholder="CSC-23S-000"
+                            placeholder="CSC-2##-000"
                             className="text-white"
                             value={formData.id1}
                             onChange={handleInputChange}
@@ -218,7 +218,7 @@ export function SignupFormDemo() {
                     </LabelInputContainer>
                 </div>
 
-                <div className="flex flex-row space-y-0 space-x-2 mb-4">
+                {/* <div className="flex flex-row space-y-0 space-x-2 mb-4">
                     <LabelInputContainer>
                         <Label htmlFor="id2" className="text-white">ID</Label>
                         <Input
@@ -243,7 +243,7 @@ export function SignupFormDemo() {
                             required
                         />
                     </LabelInputContainer>
-                </div>
+                </div> */}
 
                 {selectedMembers >= 3 && (
                     <div className="flex flex-row space-y-0 space-x-2 mb-4">
@@ -344,7 +344,7 @@ export function SignupFormDemo() {
                 <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                     <AlertDialogContent className="rounded-md">
                         <AlertDialogHeader>
-                            <AlertDialogTitle>Your Group</AlertDialogTitle>
+                            <AlertDialogTitle>Your Detail</AlertDialogTitle>
                             <AlertDialogDescription>
                                 {message}
                             </AlertDialogDescription>
