@@ -149,8 +149,8 @@ export function SignupFormDemo() {
                 <Cover>Grouping</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Here submit your Name and ID for Operating Systems (3+1) (Old Curriculum) Enrollment
-                <span className="font-extrabold"> Mr. Muhammad Shakir Sunday 12:00 - 03:00</span>
+                Here submit your Name and ID for Comupter Networking (3+1) project
+                <span className="font-extrabold"> Dr. Imran Thuesday 9:00 - 12:00</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Fall-25</span>
