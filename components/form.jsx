@@ -49,7 +49,7 @@ export function SignupFormDemo() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedMembers, setSelectedMembers] = useState(0);  // State to track selected number of members
+    const [selectedMembers, setSelectedMembers] = useState(3);  // State to track selected number of members
 
 
     const handleSelectChange = (value) => {
