@@ -49,7 +49,7 @@ export function SignupFormDemo() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedMembers, setSelectedMembers] = useState(3);  // State to track selected number of members
+    const [selectedMembers, setSelectedMembers] = useState(0);  // State to track selected number of members
 
 
     const handleSelectChange = (value) => {
@@ -70,10 +70,10 @@ export function SignupFormDemo() {
                         {
                             "ID1": formData.id1, "Member1": formData.name1,
                             "ID2": formData.id2, "Member2": formData.name2,
-                            "ID3": formData.id3, "Member3": formData.name3,
-                            "ID4": formData.id4, "Member4": formData.name4,
-                            "ID5": formData.id5, "Member5": formData.name5,
-                            "Topic": formData.topic
+                            // "ID3": formData.id3, "Member3": formData.name3,
+                            // "ID4": formData.id4, "Member4": formData.name4,
+                            // "ID5": formData.id5, "Member5": formData.name5,
+                            // "Topic": formData.topic
                         }
                     ]
                 })
@@ -81,7 +81,7 @@ export function SignupFormDemo() {
             if (response.ok) {
                 setMessage(
                     <>
-                        {`Topic: ${formData.topic}`}<br />
+                        {/* {`Topic: ${formData.topic}`}<br /> */}
                         {formData.name1} ({formData.id1})<br />
                         {formData.name2} ({formData.id2})<br />
                         {selectedMembers >= 3 && (
@@ -149,8 +149,8 @@ export function SignupFormDemo() {
                 <Cover>Grouping</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Here submit your Name and ID for Comupter Networking (3+1) project
-                <span className="font-extrabold"> Dr. Imran Thuesday 9:00 - 12:00</span>
+                Here submit your Name and ID for AI (3+1) Assignment 02
+                <span className="font-extrabold"> Dr. Fida Hussian Saturday 11:00 - 02:00</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Fall-25</span>
@@ -176,7 +176,7 @@ export function SignupFormDemo() {
                         </SelectContent>
                     </Select>
                 </div> */}
-                <div className="my-8">
+                {/* <div className="my-8">
                     <LabelInputContainer>
                         <Label htmlFor="topic" className="text-white">Topic</Label>
                         <Input
@@ -189,7 +189,7 @@ export function SignupFormDemo() {
                             required
                         />
                     </LabelInputContainer>
-                </div>
+                </div> */}
 
                 {/* Render input fields conditionally based on selectedMembers */}
                 <div className="flex flex-row space-y-0 space-x-2 mb-4">
