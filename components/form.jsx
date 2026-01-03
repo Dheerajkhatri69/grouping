@@ -149,8 +149,8 @@ export function SignupFormDemo() {
                 <Cover>Grouping</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Here submit your Name and ID for AI (3+1) Assignment 02
-                <span className="font-extrabold"> Dr. Fida Hussian Saturday 11:00 - 02:00</span>
+                Here submit your Name and ID for DIP (3+1) Assignment 02
+                <span className="font-extrabold"> Sir Ameen Friday 12:00 - 03:00</span>
                 <br />
                 <span className="font-mono">Batch:</span>
                 <span className="font-extrabold">Fall-25</span>
@@ -229,7 +229,7 @@ export function SignupFormDemo() {
                             className="text-white"
                             value={formData.id2}
                             onChange={handleInputChange}
-                            // required
+                            required
                         />
                     </LabelInputContainer>
                     <LabelInputContainer>
@@ -241,7 +241,7 @@ export function SignupFormDemo() {
                             className="text-white"
                             value={formData.name2}
                             onChange={handleInputChange}
-                            // required
+                            required
                         />
                     </LabelInputContainer>
                 </div>
