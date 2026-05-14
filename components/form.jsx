@@ -31,37 +31,69 @@ import Link from "next/link";
 export function SignupFormDemo() {
     // Initial form state
     const initialFormData = {
-        FullName: "",
-        FatherName: "",
-        CNIC: "",
-        Gender: "",
-        DateOfBirth: "",
-        DomicileCity: "",
-        Department: "",
-        EmailAddress: "",
-        MobileNumber: "",
-        RegistrationNo: "",
-        DegreeTitle: "",
-        SemesterNo: "",
-        LastSemesterGPA: "",
-        CGPA: ""
+        TopicName: "",
+        ID1: "",
+        StudentName1: "",
+        ID2: "",
+        StudentName2: "",
+        ID3: "",
+        StudentName3: "",
+        ID4: "",
+        StudentName4: "",
     };
 
-    // State to track form inputs and number of members
+    // State to track form inputs
     const [formData, setFormData] = useState(initialFormData);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
-    const [selectedMembers, setSelectedMembers] = useState(0);  // State to track selected number of members
 
+    // Function to count filled members
+    const countFilledMembers = () => {
+        let count = 0;
+        if (formData.ID1 && formData.StudentName1) count++;
+        if (formData.ID2 && formData.StudentName2) count++;
+        if (formData.ID3 && formData.StudentName3) count++;
+        if (formData.ID4 && formData.StudentName4) count++;
+        return count;
+    };
 
-    const handleSelectChange = (value) => {
-        setSelectedMembers(parseInt(value));
+    // Function to validate form
+    const isFormValid = () => {
+        const filledMembers = countFilledMembers();
+        return formData.TopicName.trim() !== "" && filledMembers >= 2 && filledMembers <= 4;
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Validate before submission
+        if (!isFormValid()) {
+            setMessage(
+                <>
+                    <strong>Invalid Group Size</strong><br /><br />
+                    Your group must have between 2 and 4 members.<br />
+                    Current members: {countFilledMembers()}
+                </>
+            );
+            setIsDialogOpen(true);
+            return;
+        }
+
         setIsDisabled(true);
         try {
+            // Build data with only filled members
+            const dataToSubmit = {
+                TopicName: formData.TopicName,
+                ID1: formData.ID1,
+                StudentName1: formData.StudentName1,
+                ID2: formData.ID2,
+                StudentName2: formData.StudentName2,
+                ID3: formData.ID3 || "",
+                StudentName3: formData.StudentName3 || "",
+                ID4: formData.ID4 || "",
+                StudentName4: formData.StudentName4 || "",
+            };
+
             const response = await fetch('https://sheetdb.io/api/v1/48w7ohbmsb772', {
                 method: 'POST',
                 headers: {
@@ -69,46 +101,40 @@ export function SignupFormDemo() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    data: [
-                        {
-                            "FullName": formData.FullName,
-                            "FatherName": formData.FatherName,
-                            "CNIC": formData.CNIC,
-                            "Gender": formData.Gender,
-                            "DateOfBirth": formData.DateOfBirth ? new Date(formData.DateOfBirth).toLocaleDateString('en-GB') : "",
-                            "DomicileCity": formData.DomicileCity,
-                            "Department": formData.Department,
-                            "EmailAddress": formData.EmailAddress,
-                            "MobileNumber": formData.MobileNumber,
-                            "RegistrationNo": formData.RegistrationNo,
-                            "DegreeTitle": formData.DegreeTitle,
-                            "SemesterNo": formData.SemesterNo,
-                            "LastSemesterGPA": formData.LastSemesterGPA,
-                            "CGPA": formData.CGPA
-                        }
-                    ]
+                    data: [dataToSubmit]
                 })
             })
+            
             if (response.ok) {
-                setMessage(
+                // Build dynamic success message based on filled members
+                let successMsg = (
                     <>
                         <strong>Registration Submitted Successfully</strong><br /><br />
-                        <strong>Name:</strong> {formData.FullName}<br />
-                        <strong>Father&apos;s Name:</strong> {formData.FatherName}<br />
-                        <strong>CNIC:</strong> {formData.CNIC}<br />
-                        <strong>Gender:</strong> {formData.Gender}<br />
-                        <strong>Date of Birth:</strong> {formData.DateOfBirth}<br />
-                        <strong>Domicile City:</strong> {formData.DomicileCity}<br />
-                        <strong>Department:</strong> {formData.Department}<br />
-                        <strong>Email:</strong> {formData.EmailAddress}<br />
-                        <strong>Mobile:</strong> {formData.MobileNumber}<br />
-                        <strong>Registration No:</strong> {formData.RegistrationNo}<br />
-                        <strong>Degree Title:</strong> {formData.DegreeTitle}<br />
-                        <strong>Semester No:</strong> {formData.SemesterNo}<br />
-                        <strong>Last Semester GPA:</strong> {formData.LastSemesterGPA}<br />
-                        <strong>CGPA:</strong> {formData.CGPA}
+                        <strong>Project Name:</strong> {formData.TopicName}<br />
+                        <strong>Member 01:</strong> {formData.StudentName1} (ID: {formData.ID1})<br />
+                        <strong>Member 02:</strong> {formData.StudentName2} (ID: {formData.ID2})<br />
                     </>
                 );
+
+                if (formData.ID3 && formData.StudentName3) {
+                    successMsg = (
+                        <>
+                            {successMsg}
+                            <strong>Member 03:</strong> {formData.StudentName3} (ID: {formData.ID3})<br />
+                        </>
+                    );
+                }
+
+                if (formData.ID4 && formData.StudentName4) {
+                    successMsg = (
+                        <>
+                            {successMsg}
+                            <strong>Member 04:</strong> {formData.StudentName4} (ID: {formData.ID4})<br />
+                        </>
+                    );
+                }
+
+                setMessage(successMsg);
             } else {
                 setMessage(
                     <>Error
@@ -133,6 +159,7 @@ export function SignupFormDemo() {
                 </>
             )
             setIsDialogOpen(true);
+            setIsDisabled(false);
             return {
                 success: false,
                 message: "An error occurred while posting the score. Please try again.",
@@ -154,230 +181,169 @@ export function SignupFormDemo() {
     return (
         <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-transparent">
             <h1 className="text-4xl font-semibold mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-                <Cover>National Skills Competency Test</Cover>
+                <Cover>Mobile Communication Project</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Please fill in your complete information below
+                Make Group For MC project with Minimum 2 Members (Max 4 Members)
             </p>
 
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
 
             <form className="my-8" onSubmit={handleSubmit}>
 
-                {/* Full Name */}
+                {/* Project Name */}
                 <div className="mb-4">
                     <LabelInputContainer>
-                        <Label htmlFor="FullName" className="text-white">Full Name</Label>
+                        <Label htmlFor="TopicName" className="text-white">Project Name <span className="text-red-500">*</span></Label>
                         <Input
                             type="text"
-                            name="FullName"
-                            placeholder="Enter your full name"
+                            name="TopicName"
+                            placeholder="Enter project name"
                             className="text-white"
-                            value={formData.FullName}
+                            value={formData.TopicName}
                             onChange={handleInputChange}
                             required
                         />
                     </LabelInputContainer>
                 </div>
 
-                {/* Father's Name */}
+                {/* Member 1 */}
                 <div className="mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="FatherName" className="text-white">Father&apos;s Name</Label>
-                        <Input
-                            type="text"
-                            name="FatherName"
-                            placeholder="Enter father's name"
-                            className="text-white"
-                            value={formData.FatherName}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
+                    <h3 className="text-white font-semibold mb-3">Member 1 <span className="text-red-500">*</span></h3>
+                    <div className="flex flex-row space-y-0 space-x-2 mb-3">
+                        <LabelInputContainer>
+                            <Label htmlFor="ID1" className="text-white">Student ID</Label>
+                            <Input
+                                type="text"
+                                name="ID1"
+                                placeholder="Enter student ID"
+                                className="text-white"
+                                value={formData.ID1}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </LabelInputContainer>
+                        <LabelInputContainer>
+                            <Label htmlFor="StudentName1" className="text-white">Student Name</Label>
+                            <Input
+                                type="text"
+                                name="StudentName1"
+                                placeholder="Enter student name"
+                                className="text-white"
+                                value={formData.StudentName1}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </LabelInputContainer>
+                    </div>
                 </div>
 
-                {/* CNIC */}
+                {/* Member 2 */}
                 <div className="mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="CNIC" className="text-white">CNIC</Label>
-                        <Input
-                            type="text"
-                            name="CNIC"
-                            placeholder="Enter CNIC number"
-                            className="text-white"
-                            value={formData.CNIC}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
+                    <h3 className="text-white font-semibold mb-3">Member 2 <span className="text-red-500">*</span></h3>
+                    <div className="flex flex-row space-y-0 space-x-2">
+                        <LabelInputContainer>
+                            <Label htmlFor="ID2" className="text-white">Student ID</Label>
+                            <Input
+                                type="text"
+                                name="ID2"
+                                placeholder="Enter student ID"
+                                className="text-white"
+                                value={formData.ID2}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </LabelInputContainer>
+                        <LabelInputContainer>
+                            <Label htmlFor="StudentName2" className="text-white">Student Name</Label>
+                            <Input
+                                type="text"
+                                name="StudentName2"
+                                placeholder="Enter student name"
+                                className="text-white"
+                                value={formData.StudentName2}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </LabelInputContainer>
+                    </div>
                 </div>
 
-                {/* Gender and Date of Birth */}
-                <div className="flex flex-row space-y-0 space-x-2 mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="Gender" className="text-white">Gender</Label>
-                        <select
-                            name="Gender"
-                            value={formData.Gender}
-                            onChange={handleInputChange}
-                            className="px-3 py-2 w-full rounded-md bg-zinc-800 text-white border border-zinc-700"
-                            required
-                        >
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="DateOfBirth" className="text-white">Date of Birth</Label>
-                        <Input
-                            type="date"
-                            name="DateOfBirth"
-                            className="text-white"
-                            value={formData.DateOfBirth}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                </div>
-
-                {/* Domicile City and Department */}
-                <div className="flex flex-row space-y-0 space-x-2 mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="DomicileCity" className="text-white">Domicile City</Label>
-                        <Input
-                            type="text"
-                            name="DomicileCity"
-                            placeholder="Enter domicile city"
-                            className="text-white"
-                            value={formData.DomicileCity}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="Department" className="text-white">Department</Label>
-                        <Input
-                            type="text"
-                            name="Department"
-                            placeholder="Enter department"
-                            className="text-white"
-                            value={formData.Department}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                </div>
-
-                {/* Email Address and Mobile Number */}
-                <div className="flex flex-row space-y-0 space-x-2 mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="EmailAddress" className="text-white">Email Address</Label>
-                        <Input
-                            type="email"
-                            name="EmailAddress"
-                            placeholder="Enter email address"
-                            className="text-white"
-                            value={formData.EmailAddress}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="MobileNumber" className="text-white">Mobile Number</Label>
-                        <Input
-                            type="tel"
-                            name="MobileNumber"
-                            placeholder="Enter mobile number"
-                            className="text-white"
-                            value={formData.MobileNumber}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                </div>
-
-                {/* Registration Number */}
+                {/* Member 3 - Optional */}
                 <div className="mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="RegistrationNo" className="text-white">Registration No</Label>
-                        <Input
-                            type="text"
-                            name="RegistrationNo"
-                            placeholder="Enter registration number"
-                            className="text-white"
-                            value={formData.RegistrationNo}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
+                    <h3 className="text-white font-semibold mb-3">Member 3 <span className="text-gray-400">(Optional)</span></h3>
+                    <div className="flex flex-row space-y-0 space-x-2 mb-3">
+                        <LabelInputContainer>
+                            <Label htmlFor="ID3" className="text-white">Student ID</Label>
+                            <Input
+                                type="text"
+                                name="ID3"
+                                placeholder="Enter student ID"
+                                className="text-white"
+                                value={formData.ID3}
+                                onChange={handleInputChange}
+                            />
+                        </LabelInputContainer>
+                        <LabelInputContainer>
+                            <Label htmlFor="StudentName3" className="text-white">Student Name</Label>
+                            <Input
+                                type="text"
+                                name="StudentName3"
+                                placeholder="Enter student name"
+                                className="text-white"
+                                value={formData.StudentName3}
+                                onChange={handleInputChange}
+                            />
+                        </LabelInputContainer>
+                    </div>
                 </div>
 
-                {/* Degree Title */}
-                <div className="mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="DegreeTitle" className="text-white">Degree Title</Label>
-                        <Input
-                            type="text"
-                            name="DegreeTitle"
-                            placeholder="Enter degree title"
-                            className="text-white"
-                            value={formData.DegreeTitle}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
+                {/* Member 4 - Optional */}
+                <div className="mb-6">
+                    <h3 className="text-white font-semibold mb-3">Member 4 <span className="text-gray-400">(Optional)</span></h3>
+                    <div className="flex flex-row space-y-0 space-x-2">
+                        <LabelInputContainer>
+                            <Label htmlFor="ID4" className="text-white">Student ID</Label>
+                            <Input
+                                type="text"
+                                name="ID4"
+                                placeholder="Enter student ID"
+                                className="text-white"
+                                value={formData.ID4}
+                                onChange={handleInputChange}
+                            />
+                        </LabelInputContainer>
+                        <LabelInputContainer>
+                            <Label htmlFor="StudentName4" className="text-white">Student Name</Label>
+                            <Input
+                                type="text"
+                                name="StudentName4"
+                                placeholder="Enter student name"
+                                className="text-white"
+                                value={formData.StudentName4}
+                                onChange={handleInputChange}
+                            />
+                        </LabelInputContainer>
+                    </div>
                 </div>
 
-                {/* Semester Number and Last Semester GPA */}
-                <div className="flex flex-row space-y-0 space-x-2 mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="SemesterNo" className="text-white">Semester No</Label>
-                        <Input
-                            type="number"
-                            name="SemesterNo"
-                            placeholder="Enter semester number"
-                            className="text-white"
-                            value={formData.SemesterNo}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="LastSemesterGPA" className="text-white">Last Semester GPA</Label>
-                        <Input
-                            type="number"
-                            step="0.01"
-                            name="LastSemesterGPA"
-                            placeholder="0.00"
-                            className="text-white"
-                            value={formData.LastSemesterGPA}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
-                </div>
-
-                {/* CGPA */}
-                <div className="mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="CGPA" className="text-white">CGPA</Label>
-                        <Input
-                            type="number"
-                            step="0.01"
-                            name="CGPA"
-                            placeholder="0.00"
-                            className="text-white"
-                            value={formData.CGPA}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </LabelInputContainer>
+                {/* Member Count Display */}
+                <div className="mb-4 p-3 bg-zinc-800 rounded-md border border-zinc-700">
+                    <p className="text-white text-sm">
+                        Members: <span className={countFilledMembers() >= 2 && countFilledMembers() <= 4 ? "text-green-400 font-semibold" : "text-red-400 font-semibold"}>
+                            {countFilledMembers()}/4
+                        </span>
+                        {countFilledMembers() < 2 && <span className="text-red-400 text-xs ml-2">(Minimum 2 required)</span>}
+                        {countFilledMembers() > 4 && <span className="text-red-400 text-xs ml-2">(Maximum 4 allowed)</span>}
+                    </p>
                 </div>
                 <button
-                    disabled={isDisabled}
-                    className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                    disabled={isDisabled || !isFormValid()}
+                    className={`relative group/btn block w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] ${
+                        isFormValid() 
+                            ? "bg-gradient-to-br from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800"
+                            : "bg-gray-600 dark:bg-gray-700 cursor-not-allowed"
+                    }`}
                     type="submit"
                 >
                     {isDisabled ? "Processing..." : <>Submit &rarr;</>}
