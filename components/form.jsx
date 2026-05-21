@@ -61,7 +61,7 @@ export function SignupFormDemo() {
     // Function to validate form
     const isFormValid = () => {
         const filledMembers = countFilledMembers();
-        return formData.TopicName.trim() !== "" && filledMembers >= 2 && filledMembers <= 4;
+        return formData.TopicName.trim() !== "" && filledMembers === 4;
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,7 +71,7 @@ export function SignupFormDemo() {
             setMessage(
                 <>
                     <strong>Invalid Group Size</strong><br /><br />
-                    Your group must have between 2 and 4 members.<br />
+                    Your group must have exactly 4 members.<br />
                     Current members: {countFilledMembers()}
                 </>
             );
@@ -181,10 +181,10 @@ export function SignupFormDemo() {
     return (
         <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-transparent">
             <h1 className="text-4xl font-semibold mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-                <Cover>Mobile Communication Project</Cover>
+                <Cover>Natural Language Processing</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Make Group For MC project with Minimum 2 Members (Max 4 Members)
+                Make Group For NLP project with Members
             </p>
 
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
@@ -269,9 +269,9 @@ export function SignupFormDemo() {
                     </div>
                 </div>
 
-                {/* Member 3 - Optional */}
+                {/* Member 3 */}
                 <div className="mb-4">
-                    <h3 className="text-white font-semibold mb-3">Member 3 <span className="text-gray-400">(Optional)</span></h3>
+                    <h3 className="text-white font-semibold mb-3">Member 3 <span className="text-red-500">*</span></h3>
                     <div className="flex flex-row space-y-0 space-x-2 mb-3">
                         <LabelInputContainer>
                             <Label htmlFor="ID3" className="text-white">Student ID</Label>
@@ -282,6 +282,7 @@ export function SignupFormDemo() {
                                 className="text-white"
                                 value={formData.ID3}
                                 onChange={handleInputChange}
+                                required
                             />
                         </LabelInputContainer>
                         <LabelInputContainer>
@@ -293,14 +294,15 @@ export function SignupFormDemo() {
                                 className="text-white"
                                 value={formData.StudentName3}
                                 onChange={handleInputChange}
+                                required
                             />
                         </LabelInputContainer>
                     </div>
                 </div>
 
-                {/* Member 4 - Optional */}
+                {/* Member 4 */}
                 <div className="mb-6">
-                    <h3 className="text-white font-semibold mb-3">Member 4 <span className="text-gray-400">(Optional)</span></h3>
+                    <h3 className="text-white font-semibold mb-3">Member 4 <span className="text-red-500">*</span></h3>
                     <div className="flex flex-row space-y-0 space-x-2">
                         <LabelInputContainer>
                             <Label htmlFor="ID4" className="text-white">Student ID</Label>
@@ -311,6 +313,7 @@ export function SignupFormDemo() {
                                 className="text-white"
                                 value={formData.ID4}
                                 onChange={handleInputChange}
+                                required
                             />
                         </LabelInputContainer>
                         <LabelInputContainer>
@@ -322,6 +325,7 @@ export function SignupFormDemo() {
                                 className="text-white"
                                 value={formData.StudentName4}
                                 onChange={handleInputChange}
+                                required
                             />
                         </LabelInputContainer>
                     </div>
@@ -330,11 +334,10 @@ export function SignupFormDemo() {
                 {/* Member Count Display */}
                 <div className="mb-4 p-3 bg-zinc-800 rounded-md border border-zinc-700">
                     <p className="text-white text-sm">
-                        Members: <span className={countFilledMembers() >= 2 && countFilledMembers() <= 4 ? "text-green-400 font-semibold" : "text-red-400 font-semibold"}>
+                        Members: <span className={countFilledMembers() === 4 ? "text-green-400 font-semibold" : "text-red-400 font-semibold"}>
                             {countFilledMembers()}/4
                         </span>
-                        {countFilledMembers() < 2 && <span className="text-red-400 text-xs ml-2">(Minimum 2 required)</span>}
-                        {countFilledMembers() > 4 && <span className="text-red-400 text-xs ml-2">(Maximum 4 allowed)</span>}
+                        {countFilledMembers() < 4 && <span className="text-red-400 text-xs ml-2">(All 4 members required)</span>}
                     </p>
                 </div>
                 <button
