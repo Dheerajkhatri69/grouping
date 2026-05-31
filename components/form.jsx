@@ -127,7 +127,6 @@ export function SignupFormDemo() {
                     // Don't block success — sheet submission already worked
                 }
 
-                // ... rest of your existing success message code
                 // Build dynamic success message based on filled members
                 let successMsg = (
                     <>
@@ -135,26 +134,29 @@ export function SignupFormDemo() {
                         <strong>Project Name:</strong> {formData.TopicName}<br />
                         <strong>Member 01:</strong> {formData.StudentName1} (ID: {formData.ID1})<br />
                         <strong>Member 02:</strong> {formData.StudentName2} (ID: {formData.ID2})<br />
+                        {formData.ID3 && formData.StudentName3 && (
+                            <><strong>Member 03:</strong> {formData.StudentName3} (ID: {formData.ID3})<br /></>
+                        )}
+                        <br />
+                        <strong>📁 Upload your Video & PPT here:</strong><br /><br />
+                        <span style={{ color: "#f87171" }}>
+                            ⚠️ <strong>IMPORTANT:</strong> When you open the link below, look for your folder named:<br /><br />
+                            <strong style={{ color: "#fbbf24", fontSize: "13px" }}>
+                                📂 {folderName}
+                            </strong><br /><br />
+                            <strong>You MUST open this folder first, then upload your PPT and Video inside it. Do NOT upload directly to the main folder.</strong>
+                        </span>
+                        <br /><br />
+                        <a
+                            href="https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=64P9eH"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: "#60a5fa", textDecoration: "underline", fontWeight: "bold" }}
+                        >
+                            🔗 Click here to open PST_Project Folder 🚀
+                        </a>
                     </>
                 );
-
-                if (formData.ID3 && formData.StudentName3) {
-                    successMsg = (
-                        <>
-                            {successMsg}
-                            <strong>Member 03:</strong> {formData.StudentName3} (ID: {formData.ID3})<br />
-                        </>
-                    );
-                }
-
-                if (formData.ID4 && formData.StudentName4) {
-                    successMsg = (
-                        <>
-                            {successMsg}
-                            <strong>Member 04:</strong> {formData.StudentName4} (ID: {formData.ID4})<br />
-                        </>
-                    );
-                }
 
                 setMessage(successMsg);
             } else {
@@ -336,8 +338,8 @@ export function SignupFormDemo() {
                 <button
                     disabled={isDisabled || !isFormValid()}
                     className={`relative group/btn block w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] ${isFormValid()
-                            ? "bg-gradient-to-br from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800"
-                            : "bg-gray-600 dark:bg-gray-700 cursor-not-allowed"
+                        ? "bg-gradient-to-br from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800"
+                        : "bg-gray-600 dark:bg-gray-700 cursor-not-allowed"
                         }`}
                     type="submit"
                 >
