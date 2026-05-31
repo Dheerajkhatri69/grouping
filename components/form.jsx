@@ -137,27 +137,34 @@ export function SignupFormDemo() {
                         {formData.ID3 && formData.StudentName3 && (
                             <><strong>Member 03:</strong> {formData.StudentName3} (ID: {formData.ID3})<br /></>
                         )}
+
                         <br />
-                        <strong>📁 Upload your Video & PPT here:</strong><br /><br />
-                        <span style={{ color: "#f87171" }}>
-                            ⚠️ <strong>IMPORTANT:</strong> When you open the link below, look for your folder named:<br /><br />
-                            <strong style={{ color: "#fbbf24", fontSize: "13px" }}>
-                                📂 {folderName}
-                            </strong><br /><br />
-                            <strong>You MUST open this folder first, then upload your PPT and Video inside it. Do NOT upload directly to the main folder.</strong>
-                        </span>
-                        <br /><br />
+                        ⚠️ <strong>IMPORTANT:</strong> Open the folder below and find your folder named <strong style={{ color: "#fbbf24" }}>📂 {folderName}</strong> then upload your PPT and Video inside it.<br /><br />
+
                         <a
                             href="https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=64P9eH"
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ color: "#60a5fa", textDecoration: "underline", fontWeight: "bold" }}
+                            style={{ color: "#60a5fa", textDecoration: "underline" }}
                         >
-                            🔗 Click here to open PST_Project Folder 🚀
+                            🔗 Open PST_Project Folder
                         </a>
+                        <button
+                            onClick={() => {
+                                navigator.clipboard.writeText("https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=64P9eH");
+                                alert("Link copied!");
+                            }}
+                            style={{ marginLeft: "8px", background: "none", border: "none", cursor: "pointer", color: "#a3a3a3", fontSize: "13px" }}
+                        >
+                            📋 Copy Link
+                        </button>
+
+                        <br /><br />
+                        <span style={{ color: "#a3a3a3", fontSize: "12px" }}>
+                            💡 Not ready? Copy the link and upload your files later.
+                        </span>
                     </>
                 );
-
                 setMessage(successMsg);
             } else {
                 setMessage(
