@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output:"export",
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["localhost:3000", "grouping-beta.vercel.app"],
+    },
+  },
 };
 
 export default nextConfig;

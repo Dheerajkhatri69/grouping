@@ -61,17 +61,17 @@ export function SignupFormDemo() {
     // Function to validate form
     const isFormValid = () => {
         const filledMembers = countFilledMembers();
-        return formData.TopicName.trim() !== "" && filledMembers === 4;
+        return formData.TopicName.trim() !== "" && filledMembers === 3;
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validate before submission
         if (!isFormValid()) {
             setMessage(
                 <>
                     <strong>Invalid Group Size</strong><br /><br />
-                    Your group must have exactly 4 members.<br />
+                    Your group must have exactly 3 members.<br />
                     Current members: {countFilledMembers()}
                 </>
             );
@@ -104,8 +104,30 @@ export function SignupFormDemo() {
                     data: [dataToSubmit]
                 })
             })
-            
+
             if (response.ok) {
+                // 🆕 Build folder name: Name1(ID1)_Name2(ID2)_Name3(ID3)
+                const folderName = [
+                    formData.StudentName1 && formData.ID1 ? `${formData.StudentName1}(${formData.ID1})` : null,
+                    formData.StudentName2 && formData.ID2 ? `${formData.StudentName2}(${formData.ID2})` : null,
+                    formData.StudentName3 && formData.ID3 ? `${formData.StudentName3}(${formData.ID3})` : null,
+                ]
+                    .filter(Boolean)
+                    .join("_");
+
+                // 🆕 Create OneDrive folder
+                try {
+                    await fetch("/api/create-folder", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ folderName }),
+                    });
+                } catch (folderErr) {
+                    console.error("Folder creation failed:", folderErr);
+                    // Don't block success — sheet submission already worked
+                }
+
+                // ... rest of your existing success message code
                 // Build dynamic success message based on filled members
                 let successMsg = (
                     <>
@@ -181,10 +203,10 @@ export function SignupFormDemo() {
     return (
         <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-transparent">
             <h1 className="text-4xl font-semibold mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-                <Cover>Natural Language Processing</Cover>
+                <Cover>Pakistan Studies Project</Cover>
             </h1>
             <p className="text-center text-sm max-w-sm mt-2 text-neutral-300">
-                Make Group For NLP project with Members
+                Register Your Group (3 Members)
             </p>
 
             {/* <Link href="/upload" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Join DBMS ClassRoom</Link> */}
@@ -300,53 +322,23 @@ export function SignupFormDemo() {
                     </div>
                 </div>
 
-                {/* Member 4 */}
-                <div className="mb-6">
-                    <h3 className="text-white font-semibold mb-3">Member 4 <span className="text-red-500">*</span></h3>
-                    <div className="flex flex-row space-y-0 space-x-2">
-                        <LabelInputContainer>
-                            <Label htmlFor="ID4" className="text-white">Student ID</Label>
-                            <Input
-                                type="text"
-                                name="ID4"
-                                placeholder="Enter student ID"
-                                className="text-white"
-                                value={formData.ID4}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </LabelInputContainer>
-                        <LabelInputContainer>
-                            <Label htmlFor="StudentName4" className="text-white">Student Name</Label>
-                            <Input
-                                type="text"
-                                name="StudentName4"
-                                placeholder="Enter student name"
-                                className="text-white"
-                                value={formData.StudentName4}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </LabelInputContainer>
-                    </div>
-                </div>
+
 
                 {/* Member Count Display */}
                 <div className="mb-4 p-3 bg-zinc-800 rounded-md border border-zinc-700">
                     <p className="text-white text-sm">
-                        Members: <span className={countFilledMembers() === 4 ? "text-green-400 font-semibold" : "text-red-400 font-semibold"}>
-                            {countFilledMembers()}/4
+                        Members: <span className={isFormValid() ? "text-green-400 font-semibold" : "text-red-400 font-semibold"}>
+                            {countFilledMembers()}/3
                         </span>
-                        {countFilledMembers() < 4 && <span className="text-red-400 text-xs ml-2">(All 4 members required)</span>}
+                        {!isFormValid() && <span className="text-red-400 text-xs ml-2">(Exactly 3 members required)</span>}
                     </p>
                 </div>
                 <button
                     disabled={isDisabled || !isFormValid()}
-                    className={`relative group/btn block w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] ${
-                        isFormValid() 
+                    className={`relative group/btn block w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] ${isFormValid()
                             ? "bg-gradient-to-br from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800"
                             : "bg-gray-600 dark:bg-gray-700 cursor-not-allowed"
-                    }`}
+                        }`}
                     type="submit"
                 >
                     {isDisabled ? "Processing..." : <>Submit &rarr;</>}
