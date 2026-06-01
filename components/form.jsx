@@ -142,7 +142,7 @@ export function SignupFormDemo() {
                         ⚠️ <strong>IMPORTANT:</strong> Open the folder below and find your folder named <strong style={{ color: "#fbbf24" }}>📂 {folderName}</strong> then upload your PPT and Video inside it.<br /><br />
 
                         <a
-                            href="https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=64P9eH"
+                            href="https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=jAfZLd"
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ color: "#60a5fa", textDecoration: "underline" }}
@@ -151,7 +151,7 @@ export function SignupFormDemo() {
                         </a>
                         <button
                             onClick={() => {
-                                navigator.clipboard.writeText("https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=64P9eH");
+                                navigator.clipboard.writeText("https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=jAfZLd");
                                 alert("Link copied!");
                             }}
                             style={{ marginLeft: "8px", background: "none", border: "none", cursor: "pointer", color: "#a3a3a3", fontSize: "13px" }}
