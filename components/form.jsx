@@ -142,7 +142,7 @@ export function SignupFormDemo() {
                         ⚠️ <strong>IMPORTANT:</strong> Open the folder below and find your folder named <strong style={{ color: "#fbbf24" }}>📂 {folderName}</strong> then upload your PPT and Video inside it.<br /><br />
 
                         <a
-                            href="https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBASejmWXkx5tAxqdGjvsKsvE?e=jAfZLd"
+                            href="https://smiupk-my.sharepoint.com/:f:/g/personal/csc23s010_stu_smiu_edu_pk/IgBy5V2BJ6iBRbd9yMi8nVqBATZYriEpzL6rlVPjy6Wl_Bc?e=udu3GY"
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ color: "#60a5fa", textDecoration: "underline" }}
