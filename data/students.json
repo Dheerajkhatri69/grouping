@@ -1,0 +1,416 @@
+[
+  {
+    "id": "BAI-23S-006",
+    "name": "SURESH MAHESHWARI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-23S-049",
+    "name": "BHAWANA DHERA",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-25S-002",
+    "name": "Sandeep kumar",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-25S-011",
+    "name": "DIAMOND ANWAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-25S-024",
+    "name": "LEKHRAJ MEGHWAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-25S-059",
+    "name": "PIRENA KUMARI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-25S-646",
+    "name": "VINESH JEDIA",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-25S-651",
+    "name": "Arbita kriplani",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BAI-26S-609",
+    "name": "MADAN GOPAL",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BCB-25S-047",
+    "name": "PAWAN KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-23S-032",
+    "name": "SHOUKAT RAI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-23S-041",
+    "name": "KARISHMA KARISHMA",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-23S-058",
+    "name": "SANJESH",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-24F-017",
+    "name": "DHEERAJ KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-25S-008",
+    "name": "PREETI KHATRI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-25S-049",
+    "name": "JATIN",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BIT-25S-062",
+    "name": "RISHMIKA NARAIN",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BSE-25S-655",
+    "name": "MERAB EMMANUEL",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BUS-22F-116",
+    "name": "NANDIKA LAL",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-22F-040",
+    "name": "POOJA KUMARI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-22F-166",
+    "name": "SAHIL HANS",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-22F-185",
+    "name": "OMESH KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-005",
+    "name": "PERSHOTAM KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-010",
+    "name": "DHEERAJ",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-030",
+    "name": "NITASHA HEERANI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-037",
+    "name": "LOVEGIR GOSWAMI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-046",
+    "name": "PAWAN KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-053",
+    "name": "RADHIKA",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-057",
+    "name": "LAKSH KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-060",
+    "name": "LUKSHKANT KHATRI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-085",
+    "name": "SUNEEL KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-113",
+    "name": "SAGAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-140",
+    "name": "NAVEEN KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-141",
+    "name": "PERSHANT DEV",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-146",
+    "name": "MANPREET",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-152",
+    "name": "OMESH KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-161",
+    "name": "NOSHAD",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-162",
+    "name": "DASRAT",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-172",
+    "name": "SUNEEL KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-198",
+    "name": "SUNDER KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-227",
+    "name": "SAHIL",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-259",
+    "name": "RAVEENA",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-23S-311",
+    "name": "SUNJESH KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-24F-021",
+    "name": "KANWAR LAL",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-24F-033",
+    "name": "PEOUSH KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-24F-634",
+    "name": "ROSHAN ROSHAN",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-036",
+    "name": "PIRENA KUMARI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-043",
+    "name": "PRIYA KUMARI",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-044",
+    "name": "SAHIL KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-060",
+    "name": "YOUDHISTAWAR SUTHAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-601",
+    "name": "HARDHAN CHARAN",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-639",
+    "name": "DEEP SINGH",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-650",
+    "name": "PARDEEP KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "CSC-25S-689",
+    "name": "AJAY KUMAR",
+    "courseCode": "HSS-106",
+    "classNo": "1790"
+  },
+  {
+    "id": "BUS-24S-021",
+    "name": "KULDEEP KUMAR",
+    "courseCode": "HMT-523",
+    "classNo": "1304"
+  },
+  {
+    "id": "BUS-24S-065",
+    "name": "POORAV ACHARIYA",
+    "courseCode": "HMT-523",
+    "classNo": "1304"
+  },
+  {
+    "id": "BUS-24S-071",
+    "name": "NARSO NARSO",
+    "courseCode": "HMT-523",
+    "classNo": "1304"
+  },
+  {
+    "id": "BUS-25F-026",
+    "name": "KHUSHBOO WERAG",
+    "courseCode": "HMT-523",
+    "classNo": "1304"
+  },
+  {
+    "id": "BUS-25F-036",
+    "name": "ATIF GILL",
+    "courseCode": "HMT-523",
+    "classNo": "1304"
+  },
+  {
+    "id": "BUS-25F-040",
+    "name": "HITESH KUMAR",
+    "courseCode": "HMT-523",
+    "classNo": "1304"
+  },
+  {
+    "id": "BUS-25F-031",
+    "name": "TANISHA VARODRA",
+    "courseCode": "HMT-523",
+    "classNo": "1301"
+  },
+  {
+    "id": "BUS-25F-092",
+    "name": "JAIDEV KUMAR",
+    "courseCode": "HMT-523",
+    "classNo": "1301"
+  },
+  {
+    "id": "BUS-25F-094",
+    "name": "JAY DAVE",
+    "courseCode": "HMT-523",
+    "classNo": "1301"
+  },
+  {
+    "id": "BED-26S-005",
+    "name": "SAMINA BATOOL",
+    "courseCode": "GIP-523",
+    "classNo": "1066"
+  },
+  {
+    "id": "BED-26S-013",
+    "name": "HANIYA SAJJAD",
+    "courseCode": "GIP-523",
+    "classNo": "1066"
+  },
+  {
+    "id": "ENV-25F-004",
+    "name": "SAHIL SANJAY",
+    "courseCode": "GET-535",
+    "classNo": "2281"
+  },
+  {
+    "id": "ENV-25F-005",
+    "name": "NITESH KUMAR",
+    "courseCode": "GET-535",
+    "classNo": "2281"
+  },
+  {
+    "id": "BCM-24S-012",
+    "name": "MOHIT RAMJI",
+    "courseCode": "HMT-523",
+    "classNo": "2274"
+  },
+  {
+    "id": "BSO-26S-005",
+    "name": "SANJNA KINGRANI",
+    "courseCode": "GET-523",
+    "classNo": "1421"
+  }
+]
