@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import students from "@/data/students.json";
 
 const SHEET_URL = "https://sheetdb.io/api/v1/48w7ohbmsb772";
-const GROUP_SIZE = 4;
+const GROUP_SIZE = 5;
 
 const emptyMembers = () => Array.from({ length: GROUP_SIZE }, () => ({ query: "", student: null }));
 
@@ -64,7 +64,7 @@ export function SignupFormDemo() {
                 <Cover>Ethics Course Group</Cover>
             </h1>
             <p className="mx-auto mt-2 max-w-lg text-center text-sm text-neutral-300">
-                Create a group for the assignment and project. A group must have exactly {GROUP_SIZE} members. Enter your own ID as Member 01, then the IDs of your other 3 members.
+                Create a group for the assignment and project. A group must have exactly {GROUP_SIZE} members. Enter your own ID as Member 01, then the IDs of your other {GROUP_SIZE - 1} members.
             </p>
 
             <form className="mx-auto my-8 max-w-lg space-y-6" onSubmit={handleSubmit}>
